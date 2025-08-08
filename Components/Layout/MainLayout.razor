@@ -1,23 +1,24 @@
 ﻿@inherits LayoutComponentBase
+@inject MudTheme Theme
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+@* <MudThemeProvider Theme="@Theme"> *@
+<MudThemeProvider Theme="@Theme" />
+    <MudLayout>
+        <MudDrawer Open="true" ClipMode="DrawerClipMode.Always">
+            <NavMenu />
+        </MudDrawer>
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
-
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
-</div>
-
-<div id="blazor-error-ui">
-    An unhandled error has occurred.
-    <a href="" class="reload">Reload</a>
-    <a class="dismiss">🗙</a>
-</div>
+        <MudMainContent>
+            <MudAppBar Color="Color.Primary">
+                <MudText Typo="Typo.h6">Mi Aplicación</MudText>
+                <MudSpacer />
+               @*  <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="CambiarTema">
+                    Cambiar Tema
+                </MudButton> *@
+            </MudAppBar>
+            <MudContainer MaxWidth="MaxWidth.Large">
+                @Body
+            </MudContainer>
+        </MudMainContent>
+    </MudLayout>
+@* </MudThemeProvider> *@

@@ -1,9 +1,12 @@
 using ERA.PORTAL_WEB.Components;
 using ERA.PORTAL_WEB.Components.Account;
 using ERA.PORTAL_WEB.Data;
+using ERA.PORTAL_WEB.Theme;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using MudBlazor;
+using MudBlazor.Services;
 
 namespace ERA.PORTAL_WEB
 {
@@ -40,6 +43,13 @@ namespace ERA.PORTAL_WEB
                 .AddDefaultTokenProviders();
 
             builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
+
+            var themeName = builder.Configuration["MudBlazorTheme"] ?? "CiberIT";
+            MudTheme selectedTheme = themeName == "DLP" ? CustomThemes.DlpTheme : CustomThemes.CiberITTheme;
+
+            builder.Services.AddSingleton(selectedTheme);
+
+            builder.Services.AddMudServices();
 
             var app = builder.Build();
 
