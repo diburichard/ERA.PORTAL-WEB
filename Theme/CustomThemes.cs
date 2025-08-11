@@ -12,7 +12,7 @@ namespace ERA.PORTAL_WEB.Theme
                 Secondary = "#43a047",
                 Background = "#f4faff",
                 AppbarBackground = "#1565c0",
-                DrawerBackground = "#e3f2fd"
+                DrawerBackground = "#e3f2fd",                    
             }
         };
 
